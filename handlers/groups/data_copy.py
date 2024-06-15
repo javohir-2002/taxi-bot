@@ -13,4 +13,7 @@ def check_words(text, words):
 # Echo bot
 @dp.message_handler(IsGroup(), lambda message: check_words(message.text, texts.ALL_WORDS))
 async def bot_echo(message: types.Message):
-    await bot.send_message(chat_id=config.GROUP, text=message.text)
+    user_link = f'<a href="tg://user?id={message.from_user.id}">{message.from_user.full_name}</a>'
+    text_with_link = f"{message.text}\n\n👤<b>Yo'lovchi:</b> {user_link}"
+    await bot.send_message(chat_id=config.GROUP, text=text_with_link, parse_mode='HTML')
+
