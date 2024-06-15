@@ -12,7 +12,7 @@ Bu uchun siz quyidagi ma'lumotlarni kiritishingiz kerak bo'ladi.
 </b>
 <b>✨ Shu bilan Sizning e'loningiz haydovchilarga yetib boradi va ular siz bilan bog'lanishadi.</b>
 
-<b>✨ @piskent_taxi_bot ✨ </b>
+<b>✨ @andijon_tax1_bot ✨ </b>
 """
 WARNING = """‼️ Ogohlantirish ‼️
 Haydovchi bilan kelishganingizdan keyin <b>✅ Olindi</b> Tugmasini bosib qo'ying

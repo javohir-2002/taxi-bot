@@ -85,7 +85,7 @@ async def get_addition(message: types.Message, state: FSMContext):
     msg += f"<b>💰 {data.get('price')} | {data.get('phone')}</b> 📞\n\n"
     msg += f"<b>👥 Odam soni:</b> {data.get('num_of_people')}\n\n"
     msg += f"<b>💬 Qo'shimcha:</b> {data.get('addition')}\n\n"
-    msg += "<b>✨ @piskent_taxi_bot ✨</b>"
+    msg += "<b>✨ @andijon_tax1_bot ✨</b>"
 
     await message.answer(msg)
 
@@ -93,7 +93,7 @@ async def get_addition(message: types.Message, state: FSMContext):
     bot["group_message_id"] = sent_message.message_id  # Save the message id
 
     await message.answer(
-        "Post @piskent_taxi guruhiga yuborildi.\nSiz bilan tez orada bog'lanishadi."
+        "Post guruhga yuborildi.\nSiz bilan tez orada bog'lanishadi."
     )
     await message.answer(WARNING, reply_markup=status)
     await state.finish()
