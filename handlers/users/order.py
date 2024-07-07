@@ -21,7 +21,7 @@ async def cancel_order(message: types.Message, state: FSMContext):
 
 @dp.message_handler(IsPrivate(), Text("🚕 TAXI 🚕"))
 async def start_ordering(message: types.Message, state: FSMContext):
-    await message.answer("Ismingizni kiriting.", reply_markup=cancel)
+    await message.answer("👤 Ismingizni kiriting.", reply_markup=cancel)
     await OrderData.name.set()
 
 
@@ -29,7 +29,7 @@ async def start_ordering(message: types.Message, state: FSMContext):
 async def get_user_name(message: types.Message, state: FSMContext):
     name = message.text.title()
     await state.update_data(name=name)
-    await message.answer("Qayerdan olib ketish kerak?")
+    await message.answer("📍 Qayerdan olib ketish kerak?")
     await OrderData.next()
 
 
@@ -37,7 +37,7 @@ async def get_user_name(message: types.Message, state: FSMContext):
 async def get_user_from_where(message: types.Message, state: FSMContext):
     from_where = message.text.capitalize()
     await state.update_data(from_where=from_where)
-    await message.answer("Qayerga olib borish kerak?")
+    await message.answer("🚕 Qayerga olib borish kerak?")
     await OrderData.next()
 
 
@@ -45,7 +45,7 @@ async def get_user_from_where(message: types.Message, state: FSMContext):
 async def get_user_to_where(message: types.Message, state: FSMContext):
     to_where = message.text.capitalize()
     await state.update_data(to_where=to_where)
-    await message.answer("Odam soni nechta?")
+    await message.answer("👥 Odam soni nechta?")
     await OrderData.next()
 
 
@@ -53,7 +53,7 @@ async def get_user_to_where(message: types.Message, state: FSMContext):
 async def get_num_of_people(message: types.Message, state: FSMContext):
     num_of_people = message.text
     await state.update_data(num_of_people=num_of_people)
-    await message.answer("Qancha to'laysiz?")
+    await message.answer("💰 Qancha to'laysiz?")
     await OrderData.next()
 
 
@@ -61,7 +61,7 @@ async def get_num_of_people(message: types.Message, state: FSMContext):
 async def get_price(message: types.Message, state: FSMContext):
     price = message.text
     await state.update_data(price=price)
-    await message.answer("Bog'lanish uchun telefon raqam kiriting?")
+    await message.answer("📞 Bog'lanish uchun telefon raqam kiriting?")
     await OrderData.next()
 
 
@@ -69,7 +69,7 @@ async def get_price(message: types.Message, state: FSMContext):
 async def get_phone(message: types.Message, state: FSMContext):
     phone = message.text
     await state.update_data(phone=phone)
-    await message.answer("Qo'shimcha ma'umot kiritishingiz mumkin?")
+    await message.answer("💬 Qo'shimcha ma'umot kiritishingiz mumkin?")
     await OrderData.next()
 
 
@@ -93,9 +93,10 @@ async def get_addition(message: types.Message, state: FSMContext):
     bot["group_message_id"] = sent_message.message_id  # Save the message id
 
     await message.answer(
-        "Post guruhga yuborildi.\nSiz bilan tez orada bog'lanishadi."
+        "Shu e'lon guruhga yuborildi.\nSiz bilan tez orada bog'lanishadi.",
+            reply_markup=order,
     )
-    await message.answer(WARNING, reply_markup=status)
+    # await message.answer(WARNING, reply_markup=status)
     await state.finish()
 
 
@@ -109,5 +110,4 @@ async def delete_group_post(message: types.Message):
     else:
         await message.answer(
             "Post o'chirib bo'lmadi, xabar identifikatori topilmadi.",
-            reply_markup=order,
         )
